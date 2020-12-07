@@ -1,0 +1,369 @@
+Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
+------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2020.1 (win64) Build 2902540 Wed May 27 19:54:49 MDT 2020
+| Date         : Mon Dec  7 20:28:21 2020
+| Host         : DESKTOP-8SDEMCC running 64-bit major release  (build 9200)
+| Command      : report_control_sets -verbose -file lab9_control_sets_placed.rpt
+| Design       : lab9
+| Device       : xc7a35ti
+------------------------------------------------------------------------------------
+
+Control Set Information
+
+Table of Contents
+-----------------
+1. Summary
+2. Histogram
+3. Flip-Flop Distribution
+4. Detailed Control Set Information
+
+1. Summary
+----------
+
++----------------------------------------------------------+-------+
+|                          Status                          | Count |
++----------------------------------------------------------+-------+
+| Total control sets                                       |   291 |
+|    Minimum number of control sets                        |   291 |
+|    Addition due to synthesis replication                 |     0 |
+|    Addition due to physical synthesis replication        |     0 |
+| Unused register locations in slices containing registers |   294 |
++----------------------------------------------------------+-------+
+* Control sets can be merged at opt_design using control_set_merge or merge_equivalent_drivers
+** Run report_qor_suggestions for automated merging and remapping suggestions
+
+
+2. Histogram
+------------
+
++--------------------+-------+
+|       Fanout       | Count |
++--------------------+-------+
+| Total control sets |   291 |
+| >= 0 to < 4        |     2 |
+| >= 4 to < 6        |    31 |
+| >= 6 to < 8        |     1 |
+| >= 8 to < 10       |   140 |
+| >= 10 to < 12      |     0 |
+| >= 12 to < 14      |     0 |
+| >= 14 to < 16      |     0 |
+| >= 16              |   117 |
++--------------------+-------+
+* Control sets can be remapped at either synth_design or opt_design
+
+
+3. Flip-Flop Distribution
+-------------------------
+
++--------------+-----------------------+------------------------+-----------------+--------------+
+| Clock Enable | Synchronous Set/Reset | Asynchronous Set/Reset | Total Registers | Total Slices |
++--------------+-----------------------+------------------------+-----------------+--------------+
+| No           | No                    | No                     |            1231 |          339 |
+| No           | No                    | Yes                    |               0 |            0 |
+| No           | Yes                   | No                     |              97 |           37 |
+| Yes          | No                    | No                     |            4878 |         1329 |
+| Yes          | No                    | Yes                    |               0 |            0 |
+| Yes          | Yes                   | No                     |            3332 |          886 |
++--------------+-----------------------+------------------------+-----------------+--------------+
+
+
+4. Detailed Control Set Information
+-----------------------------------
+
++-----------------------------------+------------------------------------+------------------------------------+------------------+----------------+--------------+
+|            Clock Signal           |            Enable Signal           |          Set/Reset Signal          | Slice Load Count | Bel Load Count | Bels / Slice |
++-----------------------------------+------------------------------------+------------------------------------+------------------+----------------+--------------+
+|  clk_IBUF_BUFG                    | digest0/password[0][7]_i_2_n_0     | digest0/password[0][7]_i_1_n_0     |                1 |              1 |         1.00 |
+|  clk_IBUF_BUFG                    | digest7/password[0][5]_i_2__2_n_0  | digest7/password[0][5]_i_1__3_n_0  |                1 |              1 |         1.00 |
+|  clk_IBUF_BUFG                    | digest4/password[0][6]_i_1__3_n_0  |                                    |                1 |              4 |         4.00 |
+|  clk_IBUF_BUFG                    | digest8/password[0][6]_i_1__7_n_0  |                                    |                1 |              4 |         4.00 |
+|  clk_IBUF_BUFG                    | digest9/password[0][7]_i_1__4_n_0  | digest9/password[0][5]_i_1__8_n_0  |                1 |              4 |         4.00 |
+|  clk_IBUF_BUFG                    | digest2/password[0][6]_i_1__1_n_0  |                                    |                1 |              4 |         4.00 |
+|  clk_IBUF_BUFG                    | digest2/password[0][6]_i_1__1_n_0  | digest2/password[0][7]_i_1__6_n_0  |                1 |              4 |         4.00 |
+|  clk_IBUF_BUFG                    | digest1/password[0][6]_i_1__0_n_0  |                                    |                1 |              4 |         4.00 |
+|  clk_IBUF_BUFG                    | digest1/password[0][6]_i_1__0_n_0  | digest1/password[0][7]_i_1__5_n_0  |                1 |              4 |         4.00 |
+|  clk_IBUF_BUFG                    | digest7/password[0][5]_i_2__2_n_0  |                                    |                1 |              4 |         4.00 |
+|  clk_IBUF_BUFG                    | digest6/password[0][7]_i_1__2_n_0  | digest6/password[0][5]_i_1__7_n_0  |                1 |              4 |         4.00 |
+|  FSM_onehot_P_next_reg[3]_i_2_n_0 |                                    |                                    |                1 |              4 |         4.00 |
+|  clk_IBUF_BUFG                    | digest0/password[0][7]_i_2_n_0     |                                    |                1 |              4 |         4.00 |
+|  clk_IBUF_BUFG                    | digest3/password[0][7]_i_1__0_n_0  |                                    |                1 |              4 |         4.00 |
+|  clk_IBUF_BUFG                    | digest3/password[0][7]_i_1__0_n_0  | digest3/password[0][5]_i_1__5_n_0  |                2 |              4 |         2.00 |
+|  clk_IBUF_BUFG                    | lcd0/icode                         |                                    |                1 |              4 |         4.00 |
+|  clk_IBUF_BUFG                    | digest5/password[0][7]_i_1__1_n_0  | digest5/password[0][5]_i_1__6_n_0  |                1 |              4 |         4.00 |
+|  clk_IBUF_BUFG                    | digest6/password[0][7]_i_1__2_n_0  |                                    |                2 |              4 |         2.00 |
+|  clk_IBUF_BUFG                    | lcd0/tcode[3]_i_1_n_0              |                                    |                3 |              4 |         1.33 |
+|  clk_IBUF_BUFG                    | digest4/password[0][6]_i_1__3_n_0  | digest4/password[0][7]_i_1__7_n_0  |                1 |              4 |         4.00 |
+|  clk_IBUF_BUFG                    | digest5/password[0][7]_i_1__1_n_0  |                                    |                1 |              4 |         4.00 |
+|  clk_IBUF_BUFG                    | digest9/password[0][7]_i_1__4_n_0  |                                    |                1 |              4 |         4.00 |
+|  clk_IBUF_BUFG                    | digest8/password[0][6]_i_1__7_n_0  | digest8/password[0][7]_i_1__8_n_0  |                1 |              4 |         4.00 |
+|  digest2/P_next_reg[4]_i_2__1_n_0 |                                    |                                    |                2 |              5 |         2.50 |
+|  digest0/P_next_reg[4]_i_2_n_0    |                                    |                                    |                2 |              5 |         2.50 |
+|  digest3/P_next_reg[4]_i_2__2_n_0 |                                    |                                    |                3 |              5 |         1.67 |
+|  digest4/P_next_reg[4]_i_2__3_n_0 |                                    |                                    |                3 |              5 |         1.67 |
+|  digest5/P_next_reg[4]_i_2__4_n_0 |                                    |                                    |                2 |              5 |         2.50 |
+|  digest6/P_next_reg[4]_i_2__5_n_0 |                                    |                                    |                3 |              5 |         1.67 |
+|  digest7/P_next_reg[4]_i_2__6_n_0 |                                    |                                    |                2 |              5 |         2.50 |
+|  digest8/P_next_reg[4]_i_2__7_n_0 |                                    |                                    |                2 |              5 |         2.50 |
+|  digest9/P_next_reg[4]_i_2__8_n_0 |                                    |                                    |                2 |              5 |         2.50 |
+|  digest1/P_next_reg[4]_i_2__0_n_0 |                                    |                                    |                3 |              5 |         1.67 |
+|  clk_IBUF_BUFG                    | lcd0/lcd_initialized_reg_n_0       | lcd0/SR[0]                         |                6 |              7 |         1.17 |
+|  clk_IBUF_BUFG                    | digest6/password[1][7]_i_1__4_n_0  |                                    |                2 |              8 |         4.00 |
+|  clk_IBUF_BUFG                    | digest6/password[4][7]_i_1__5_n_0  |                                    |                3 |              8 |         2.67 |
+|  clk_IBUF_BUFG                    | digest6/password[2][7]_i_1__4_n_0  |                                    |                2 |              8 |         4.00 |
+|  clk_IBUF_BUFG                    | digest6/password[7][7]_i_1__5_n_0  |                                    |                2 |              8 |         4.00 |
+|  clk_IBUF_BUFG                    | digest6/password[3][7]_i_1__5_n_0  |                                    |                2 |              8 |         4.00 |
+|  clk_IBUF_BUFG                    | digest6/password[6][7]_i_1__5_n_0  |                                    |                3 |              8 |         2.67 |
+|  clk_IBUF_BUFG                    | digest6/password[5][7]_i_1__5_n_0  |                                    |                3 |              8 |         2.67 |
+|  clk_IBUF_BUFG                    | digest7/password[1][7]_i_1__8_n_0  |                                    |                2 |              8 |         4.00 |
+|  clk_IBUF_BUFG                    | digest7/password[2][7]_i_1__8_n_0  |                                    |                2 |              8 |         4.00 |
+|  clk_IBUF_BUFG                    | digest7/password[5][7]_i_1__6_n_0  |                                    |                2 |              8 |         4.00 |
+|  clk_IBUF_BUFG                    | digest7/password[3][7]_i_1__6_n_0  |                                    |                2 |              8 |         4.00 |
+|  clk_IBUF_BUFG                    | digest7/password[4][7]_i_1__6_n_0  |                                    |                2 |              8 |         4.00 |
+|  clk_IBUF_BUFG                    | digest7/password[6][7]_i_1__6_n_0  |                                    |                2 |              8 |         4.00 |
+|  clk_IBUF_BUFG                    | digest7/password[7][7]_i_1__6_n_0  |                                    |                2 |              8 |         4.00 |
+|  clk_IBUF_BUFG                    | digest1/password[1][7]_i_1_n_0     |                                    |                3 |              8 |         2.67 |
+|  clk_IBUF_BUFG                    | digest7/timer[4][7]_i_2__6_n_0     | digest7/timer[4][7]_i_1__1_n_0     |                2 |              8 |         4.00 |
+|  clk_IBUF_BUFG                    | digest7/timer[6][7]_i_2__6_n_0     | digest7/timer[6][7]_i_1__1_n_0     |                2 |              8 |         4.00 |
+|  clk_IBUF_BUFG                    | digest7/timer[1][7]_i_2__6_n_0     | digest7/timer[1][7]_i_1__1_n_0     |                3 |              8 |         2.67 |
+|  clk_IBUF_BUFG                    | digest0/password[5][7]_i_1_n_0     |                                    |                2 |              8 |         4.00 |
+|  clk_IBUF_BUFG                    | digest0/password[3][7]_i_1_n_0     |                                    |                2 |              8 |         4.00 |
+|  clk_IBUF_BUFG                    | digest0/password[4][7]_i_1_n_0     |                                    |                3 |              8 |         2.67 |
+|  clk_IBUF_BUFG                    | digest0/password[2][7]_i_1__7_n_0  |                                    |                2 |              8 |         4.00 |
+|  clk_IBUF_BUFG                    | digest0/password[1][7]_i_1__7_n_0  |                                    |                2 |              8 |         4.00 |
+|  clk_IBUF_BUFG                    | digest7/timer[3][7]_i_2__6_n_0     | digest7/timer[3][7]_i_1__1_n_0     |                2 |              8 |         4.00 |
+|  clk_IBUF_BUFG                    | digest7/timer[2][7]_i_2__6_n_0     | digest7/timer[2][7]_i_1__0_n_0     |                2 |              8 |         4.00 |
+|  clk_IBUF_BUFG                    | digest0/password[7][7]_i_1_n_0     |                                    |                2 |              8 |         4.00 |
+|  clk_IBUF_BUFG                    | digest0/password[6][7]_i_1_n_0     |                                    |                3 |              8 |         2.67 |
+|  clk_IBUF_BUFG                    | digest0/timer[3][7]_i_2_n_0        | digest0/timer[3][7]_i_1__8_n_0     |                2 |              8 |         4.00 |
+|  clk_IBUF_BUFG                    | digest0/timer[2][7]_i_2_n_0        | digest0/timer[2][7]_i_1__4_n_0     |                3 |              8 |         2.67 |
+|  clk_IBUF_BUFG                    | digest0/timer                      | lcd0/SR[0]                         |                2 |              8 |         4.00 |
+|  clk_IBUF_BUFG                    | digest0/timer[1][7]_i_2_n_0        | digest0/timer[1][7]_i_1__8_n_0     |                2 |              8 |         4.00 |
+|  clk_IBUF_BUFG                    | digest7/timer                      | lcd0/SR[0]                         |                2 |              8 |         4.00 |
+|  clk_IBUF_BUFG                    | digest0/timer[4][7]_i_2_n_0        | digest0/timer[4][7]_i_1__8_n_0     |                2 |              8 |         4.00 |
+|  clk_IBUF_BUFG                    | digest0/timer[5][7]_i_2_n_0        | digest0/timer[5][7]_i_1__8_n_0     |                3 |              8 |         2.67 |
+|  clk_IBUF_BUFG                    | digest0/timer[6][7]_i_2_n_0        | digest0/timer[6][7]_i_1__8_n_0     |                2 |              8 |         4.00 |
+|  clk_IBUF_BUFG                    | digest7/timer[5][7]_i_2__6_n_0     | digest7/timer[5][7]_i_1__1_n_0     |                2 |              8 |         4.00 |
+|  clk_IBUF_BUFG                    | digest8/password[1][7]_i_1__5_n_0  |                                    |                2 |              8 |         4.00 |
+|  clk_IBUF_BUFG                    | digest8/password[2][7]_i_1__5_n_0  |                                    |                3 |              8 |         2.67 |
+|  clk_IBUF_BUFG                    | digest8/password[4][7]_i_1__7_n_0  |                                    |                4 |              8 |         2.00 |
+|  clk_IBUF_BUFG                    | digest8/password[3][7]_i_1__7_n_0  |                                    |                2 |              8 |         4.00 |
+|  clk_IBUF_BUFG                    | digest8/password[5][7]_i_1__7_n_0  |                                    |                3 |              8 |         2.67 |
+|  clk_IBUF_BUFG                    | digest8/password[6][7]_i_1__7_n_0  |                                    |                2 |              8 |         4.00 |
+|  clk_IBUF_BUFG                    | digest2/password[2][7]_i_1__0_n_0  |                                    |                2 |              8 |         4.00 |
+|  clk_IBUF_BUFG                    | digest2/password[1][7]_i_1__0_n_0  |                                    |                3 |              8 |         2.67 |
+|  clk_IBUF_BUFG                    | digest8/timer[2][7]_i_2__7_n_0     | digest8/timer[2][7]_i_1__8_n_0     |                2 |              8 |         4.00 |
+|  clk_IBUF_BUFG                    | digest2/password[3][7]_i_1__1_n_0  |                                    |                2 |              8 |         4.00 |
+|  clk_IBUF_BUFG                    | digest8/timer[3][7]_i_2__7_n_0     | digest8/timer[3][7]_i_1__0_n_0     |                2 |              8 |         4.00 |
+|  clk_IBUF_BUFG                    | digest2/password[6][7]_i_1__1_n_0  |                                    |                4 |              8 |         2.00 |
+|  clk_IBUF_BUFG                    | digest2/password[4][7]_i_1__1_n_0  |                                    |                2 |              8 |         4.00 |
+|  clk_IBUF_BUFG                    | digest2/password[5][7]_i_1__1_n_0  |                                    |                3 |              8 |         2.67 |
+|  clk_IBUF_BUFG                    | digest8/timer[6][7]_i_2__7_n_0     | digest8/timer[6][7]_i_1__0_n_0     |                2 |              8 |         4.00 |
+|  clk_IBUF_BUFG                    | digest2/password[7][7]_i_1__1_n_0  |                                    |                2 |              8 |         4.00 |
+|  clk_IBUF_BUFG                    | digest8/timer[1][7]_i_2__7_n_0     | digest8/timer[1][7]_i_1__0_n_0     |                2 |              8 |         4.00 |
+|  clk_IBUF_BUFG                    | digest1/password[4][7]_i_1__0_n_0  |                                    |                3 |              8 |         2.67 |
+|  clk_IBUF_BUFG                    | digest1/password[6][7]_i_1__0_n_0  |                                    |                2 |              8 |         4.00 |
+|  clk_IBUF_BUFG                    | digest1/password[5][7]_i_1__0_n_0  |                                    |                2 |              8 |         4.00 |
+|  clk_IBUF_BUFG                    | digest1/password[3][7]_i_1__0_n_0  |                                    |                3 |              8 |         2.67 |
+|  clk_IBUF_BUFG                    | digest1/password[2][7]_i_1_n_0     |                                    |                3 |              8 |         2.67 |
+|  clk_IBUF_BUFG                    | digest1/password[7][7]_i_1__0_n_0  |                                    |                2 |              8 |         4.00 |
+|  clk_IBUF_BUFG                    | digest8/timer[4][7]_i_2__7_n_0     | digest8/timer[4][7]_i_1__0_n_0     |                2 |              8 |         4.00 |
+|  clk_IBUF_BUFG                    | digest8/timer[5][7]_i_2__7_n_0     | digest8/timer[5][7]_i_1__0_n_0     |                2 |              8 |         4.00 |
+|  clk_IBUF_BUFG                    | digest1/timer                      | lcd0/SR[0]                         |                2 |              8 |         4.00 |
+|  clk_IBUF_BUFG                    | digest1/timer[3][7]_i_2__0_n_0     | digest1/timer[3][7]_i_1__7_n_0     |                3 |              8 |         2.67 |
+|  clk_IBUF_BUFG                    | digest1/timer[4][7]_i_2__0_n_0     | digest1/timer[4][7]_i_1__7_n_0     |                2 |              8 |         4.00 |
+|  clk_IBUF_BUFG                    | digest1/timer[1][7]_i_2__0_n_0     | digest1/timer[1][7]_i_1__7_n_0     |                2 |              8 |         4.00 |
+|  clk_IBUF_BUFG                    | digest1/timer[2][7]_i_2__0_n_0     | digest1/timer[2][7]_i_1__3_n_0     |                2 |              8 |         4.00 |
+|  clk_IBUF_BUFG                    | digest1/timer[5][7]_i_2__0_n_0     | digest1/timer[5][7]_i_1__7_n_0     |                3 |              8 |         2.67 |
+|  clk_IBUF_BUFG                    | digest8/timer                      | lcd0/SR[0]                         |                2 |              8 |         4.00 |
+|  clk_IBUF_BUFG                    | digest1/timer[6][7]_i_2__0_n_0     | digest1/timer[6][7]_i_1__7_n_0     |                2 |              8 |         4.00 |
+|  clk_IBUF_BUFG                    | digest9/password[1][7]_i_1__6_n_0  |                                    |                3 |              8 |         2.67 |
+|  clk_IBUF_BUFG                    | digest9/password[3][7]_i_1__8_n_0  |                                    |                2 |              8 |         4.00 |
+|  clk_IBUF_BUFG                    | digest9/password[2][7]_i_1__6_n_0  |                                    |                3 |              8 |         2.67 |
+|  clk_IBUF_BUFG                    | digest9/password[7][7]_i_1__8_n_0  |                                    |                2 |              8 |         4.00 |
+|  clk_IBUF_BUFG                    | digest9/password[4][7]_i_1__8_n_0  |                                    |                3 |              8 |         2.67 |
+|  clk_IBUF_BUFG                    | digest2/timer[4][7]_i_2__1_n_0     | digest2/timer[4][7]_i_1__6_n_0     |                2 |              8 |         4.00 |
+|  clk_IBUF_BUFG                    | digest2/timer                      | lcd0/SR[0]                         |                2 |              8 |         4.00 |
+|  clk_IBUF_BUFG                    | digest2/timer[1][7]_i_2__1_n_0     | digest2/timer[1][7]_i_1__6_n_0     |                2 |              8 |         4.00 |
+|  clk_IBUF_BUFG                    | digest2/timer[3][7]_i_2__1_n_0     | digest2/timer[3][7]_i_1__6_n_0     |                2 |              8 |         4.00 |
+|  clk_IBUF_BUFG                    | digest2/timer[2][7]_i_2__1_n_0     | digest2/timer[2][7]_i_1__5_n_0     |                2 |              8 |         4.00 |
+|  clk_IBUF_BUFG                    | digest2/timer[5][7]_i_2__1_n_0     | digest2/timer[5][7]_i_1__6_n_0     |                3 |              8 |         2.67 |
+|  clk_IBUF_BUFG                    | digest2/timer[6][7]_i_2__1_n_0     | digest2/timer[6][7]_i_1__6_n_0     |                2 |              8 |         4.00 |
+|  clk_IBUF_BUFG                    | digest9/password[5][7]_i_1__8_n_0  |                                    |                3 |              8 |         2.67 |
+|  clk_IBUF_BUFG                    | digest9/password[6][7]_i_1__8_n_0  |                                    |                3 |              8 |         2.67 |
+|  clk_IBUF_BUFG                    | digest9/timer[2][7]_i_2__8_n_0     | digest9/timer[2][7]_i_1_n_0        |                2 |              8 |         4.00 |
+|  clk_IBUF_BUFG                    | digest9/timer[1][7]_i_2__8_n_0     | digest9/timer[1][7]_i_1_n_0        |                2 |              8 |         4.00 |
+|  clk_IBUF_BUFG                    | digest9/timer                      | lcd0/SR[0]                         |                2 |              8 |         4.00 |
+|  clk_IBUF_BUFG                    | digest9/timer[3][7]_i_2__8_n_0     | digest9/timer[3][7]_i_1_n_0        |                2 |              8 |         4.00 |
+|  clk_IBUF_BUFG                    | digest9/timer[4][7]_i_2__8_n_0     | digest9/timer[4][7]_i_1_n_0        |                2 |              8 |         4.00 |
+|  clk_IBUF_BUFG                    | digest9/timer[6][7]_i_2__8_n_0     | digest9/timer[6][7]_i_1_n_0        |                2 |              8 |         4.00 |
+|  clk_IBUF_BUFG                    | digest4/password[7][7]_i_1__3_n_0  |                                    |                3 |              8 |         2.67 |
+|  clk_IBUF_BUFG                    | digest3/password[1][7]_i_1__1_n_0  |                                    |                2 |              8 |         4.00 |
+|  clk_IBUF_BUFG                    | digest3/password[3][7]_i_1__2_n_0  |                                    |                2 |              8 |         4.00 |
+|  clk_IBUF_BUFG                    | digest3/password[5][7]_i_1__2_n_0  |                                    |                3 |              8 |         2.67 |
+|  clk_IBUF_BUFG                    | digest3/password[6][7]_i_1__2_n_0  |                                    |                3 |              8 |         2.67 |
+|  clk_IBUF_BUFG                    | digest3/password[4][7]_i_1__2_n_0  |                                    |                3 |              8 |         2.67 |
+|  clk_IBUF_BUFG                    | digest3/password[2][7]_i_1__1_n_0  |                                    |                3 |              8 |         2.67 |
+|  clk_IBUF_BUFG                    | digest3/password[7][7]_i_1__2_n_0  |                                    |                2 |              8 |         4.00 |
+|  clk_IBUF_BUFG                    | digest9/timer[5][7]_i_2__8_n_0     | digest9/timer[5][7]_i_1_n_0        |                2 |              8 |         4.00 |
+|  clk_IBUF_BUFG                    | digest3/timer                      | lcd0/SR[0]                         |                2 |              8 |         4.00 |
+|  clk_IBUF_BUFG                    | digest3/timer[1][7]_i_2__2_n_0     | digest3/timer[1][7]_i_1__5_n_0     |                2 |              8 |         4.00 |
+|  clk_IBUF_BUFG                    | digest3/timer[2][7]_i_2__2_n_0     | digest3/timer[2][7]_i_1__2_n_0     |                2 |              8 |         4.00 |
+|  clk_IBUF_BUFG                    | digest3/timer[4][7]_i_2__2_n_0     | digest3/timer[4][7]_i_1__5_n_0     |                2 |              8 |         4.00 |
+|  clk_IBUF_BUFG                    | digest3/timer[6][7]_i_2__2_n_0     | digest3/timer[6][7]_i_1__5_n_0     |                2 |              8 |         4.00 |
+|  clk_IBUF_BUFG                    | digest3/timer[3][7]_i_2__2_n_0     | digest3/timer[3][7]_i_1__5_n_0     |                2 |              8 |         4.00 |
+|  clk_IBUF_BUFG                    | digest3/timer[5][7]_i_2__2_n_0     | digest3/timer[5][7]_i_1__5_n_0     |                3 |              8 |         2.67 |
+|  clk_IBUF_BUFG                    | digest4/password[2][7]_i_1__2_n_0  |                                    |                3 |              8 |         2.67 |
+|  clk_IBUF_BUFG                    | digest4/password[1][7]_i_1__2_n_0  |                                    |                2 |              8 |         4.00 |
+|  clk_IBUF_BUFG                    | digest4/password[4][7]_i_1__3_n_0  |                                    |                3 |              8 |         2.67 |
+|  clk_IBUF_BUFG                    | digest4/password[3][7]_i_1__3_n_0  |                                    |                2 |              8 |         4.00 |
+|  clk_IBUF_BUFG                    | digest4/password[5][7]_i_1__3_n_0  |                                    |                4 |              8 |         2.00 |
+|  clk_IBUF_BUFG                    | digest4/password[6][7]_i_1__3_n_0  |                                    |                3 |              8 |         2.67 |
+|  clk_IBUF_BUFG                    | digest8/password[7][7]_i_1__7_n_0  |                                    |                2 |              8 |         4.00 |
+|  clk_IBUF_BUFG                    | digest4/timer[3][7]_i_2__3_n_0     | digest4/timer[3][7]_i_1__4_n_0     |                2 |              8 |         4.00 |
+|  clk_IBUF_BUFG                    | digest4/timer[1][7]_i_2__3_n_0     | digest4/timer[1][7]_i_1__4_n_0     |                2 |              8 |         4.00 |
+|  clk_IBUF_BUFG                    | digest4/timer[2][7]_i_2__3_n_0     | digest4/timer[2][7]_i_1__6_n_0     |                2 |              8 |         4.00 |
+|  clk_IBUF_BUFG                    | digest4/timer[4][7]_i_2__3_n_0     | digest4/timer[4][7]_i_1__4_n_0     |                3 |              8 |         2.67 |
+|  clk_IBUF_BUFG                    | digest4/timer[5][7]_i_2__3_n_0     | digest4/timer[5][7]_i_1__4_n_0     |                3 |              8 |         2.67 |
+|  clk_IBUF_BUFG                    | digest4/timer[6][7]_i_2__3_n_0     | digest4/timer[6][7]_i_1__4_n_0     |                3 |              8 |         2.67 |
+|  clk_IBUF_BUFG                    | digest4/timer                      | lcd0/SR[0]                         |                2 |              8 |         4.00 |
+|  clk_IBUF_BUFG                    | digest5/password[1][7]_i_1__3_n_0  |                                    |                3 |              8 |         2.67 |
+|  clk_IBUF_BUFG                    | digest5/password[4][7]_i_1__4_n_0  |                                    |                3 |              8 |         2.67 |
+|  clk_IBUF_BUFG                    | digest5/password[5][7]_i_1__4_n_0  |                                    |                2 |              8 |         4.00 |
+|  clk_IBUF_BUFG                    | digest5/password[6][7]_i_1__4_n_0  |                                    |                3 |              8 |         2.67 |
+|  clk_IBUF_BUFG                    | digest5/password[2][7]_i_1__3_n_0  |                                    |                3 |              8 |         2.67 |
+|  clk_IBUF_BUFG                    | digest5/password[3][7]_i_1__4_n_0  |                                    |                2 |              8 |         4.00 |
+|  clk_IBUF_BUFG                    | digest5/password[7][7]_i_1__4_n_0  |                                    |                2 |              8 |         4.00 |
+|  clk_IBUF_BUFG                    | digest5/timer[2][7]_i_2__4_n_0     | digest5/timer[2][7]_i_1__1_n_0     |                2 |              8 |         4.00 |
+|  clk_IBUF_BUFG                    | digest5/timer[3][7]_i_2__4_n_0     | digest5/timer[3][7]_i_1__3_n_0     |                3 |              8 |         2.67 |
+|  clk_IBUF_BUFG                    | digest5/timer                      | lcd0/SR[0]                         |                3 |              8 |         2.67 |
+|  clk_IBUF_BUFG                    | digest5/timer[4][7]_i_2__4_n_0     | digest5/timer[4][7]_i_1__3_n_0     |                2 |              8 |         4.00 |
+|  clk_IBUF_BUFG                    | digest5/timer[5][7]_i_2__4_n_0     | digest5/timer[5][7]_i_1__3_n_0     |                2 |              8 |         4.00 |
+|  clk_IBUF_BUFG                    | digest5/timer[1][7]_i_2__4_n_0     | digest5/timer[1][7]_i_1__3_n_0     |                3 |              8 |         2.67 |
+|  clk_IBUF_BUFG                    | digest5/timer[6][7]_i_2__4_n_0     | digest5/timer[6][7]_i_1__3_n_0     |                2 |              8 |         4.00 |
+|  clk_IBUF_BUFG                    | digest6/timer[6][7]_i_2__5_n_0     | digest6/timer[6][7]_i_1__2_n_0     |                2 |              8 |         4.00 |
+|  clk_IBUF_BUFG                    | digest6/timer[4][7]_i_2__5_n_0     | digest6/timer[4][7]_i_1__2_n_0     |                2 |              8 |         4.00 |
+|  clk_IBUF_BUFG                    | digest6/timer[5][7]_i_2__5_n_0     | digest6/timer[5][7]_i_1__2_n_0     |                2 |              8 |         4.00 |
+|  clk_IBUF_BUFG                    | digest6/timer                      | lcd0/SR[0]                         |                2 |              8 |         4.00 |
+|  clk_IBUF_BUFG                    | digest6/timer[2][7]_i_2__5_n_0     | digest6/timer[2][7]_i_1__7_n_0     |                2 |              8 |         4.00 |
+|  clk_IBUF_BUFG                    | digest6/timer[1][7]_i_2__5_n_0     | digest6/timer[1][7]_i_1__2_n_0     |                2 |              8 |         4.00 |
+|  clk_IBUF_BUFG                    | digest6/timer[3][7]_i_2__5_n_0     | digest6/timer[3][7]_i_1__2_n_0     |                3 |              8 |         2.67 |
+|  clk_IBUF_BUFG                    |                                    | init_counter                       |                5 |             18 |         3.60 |
+|  clk_IBUF_BUFG                    |                                    | btn_db0/clear                      |                6 |             22 |         3.67 |
+|  clk_IBUF_BUFG                    | lcd0/lcd_initialized_reg_n_0       | lcd0/text_count[0]_i_1_n_0         |                7 |             25 |         3.57 |
+|  clk_IBUF_BUFG                    | digest2/temp[31]_i_1__1_n_0        |                                    |                6 |             32 |         5.33 |
+|  clk_IBUF_BUFG                    | digest0/P_next_reg[4]_i_1_n_0      | digest0/clear                      |                8 |             32 |         4.00 |
+|  clk_IBUF_BUFG                    | lcd0/init_e_i_1_n_0                | lcd0/SR[0]                         |               11 |             32 |         2.91 |
+|  clk_IBUF_BUFG                    | digest1/P_next_reg[4]_i_1__0_n_0   | digest1/clear                      |                8 |             32 |         4.00 |
+|  clk_IBUF_BUFG                    | digest8/P_next_reg[4]_i_1__7_n_0   | digest8/clear                      |                8 |             32 |         4.00 |
+|  clk_IBUF_BUFG                    | digest5/time_counter[0]_i_2__5_n_0 | digest5/time_counter[0]_i_1__3_n_0 |                8 |             32 |         4.00 |
+|  clk_IBUF_BUFG                    | digest9/time_counter[0]_i_2__8_n_0 | digest9/time_counter[0]_i_1_n_0    |                8 |             32 |         4.00 |
+|  clk_IBUF_BUFG                    | digest5/P_next_reg[4]_i_1__4_n_0   | digest5/clear                      |                8 |             32 |         4.00 |
+|  clk_IBUF_BUFG                    | digest9/temp[31]_i_1__8_n_0        |                                    |               11 |             32 |         2.91 |
+|  clk_IBUF_BUFG                    | digest3/P_next_reg[4]_i_1__2_n_0   | digest3/clear                      |                8 |             32 |         4.00 |
+|  clk_IBUF_BUFG                    | digest3/temp[31]_i_1__2_n_0        |                                    |                8 |             32 |         4.00 |
+|  clk_IBUF_BUFG                    | digest7/P_next_reg[4]_i_1__6_n_0   | digest7/clear                      |                8 |             32 |         4.00 |
+|  clk_IBUF_BUFG                    | digest6/temp[31]_i_1__5_n_0        |                                    |                8 |             32 |         4.00 |
+|  clk_IBUF_BUFG                    | digest6/time_counter[0]_i_2__6_n_0 | digest6/time_counter[0]_i_1__2_n_0 |                8 |             32 |         4.00 |
+|  clk_IBUF_BUFG                    | digest0/time_counter[0]_i_2_n_0    | digest0/time_counter[0]_i_1__8_n_0 |                8 |             32 |         4.00 |
+|  clk_IBUF_BUFG                    | digest0/temp[31]_i_1_n_0           |                                    |               10 |             32 |         3.20 |
+|  clk_IBUF_BUFG                    | digest4/P_next_reg[4]_i_1__3_n_0   | digest4/clear                      |                8 |             32 |         4.00 |
+|  clk_IBUF_BUFG                    | digest2/P_next_reg[4]_i_1__1_n_0   | digest2/clear                      |                8 |             32 |         4.00 |
+|  clk_IBUF_BUFG                    | digest9/P_next_reg[4]_i_1__8_n_0   | digest9/clear                      |                8 |             32 |         4.00 |
+|  clk_IBUF_BUFG                    | digest4/temp[31]_i_1__3_n_0        |                                    |                9 |             32 |         3.56 |
+|  clk_IBUF_BUFG                    | digest3/time_counter[0]_i_2__3_n_0 | digest3/time_counter[0]_i_1__5_n_0 |                8 |             32 |         4.00 |
+|  clk_IBUF_BUFG                    | digest8/time_counter[0]_i_2__7_n_0 | digest8/time_counter[0]_i_1__0_n_0 |                8 |             32 |         4.00 |
+|  clk_IBUF_BUFG                    | digest6/P_next_reg[4]_i_1__5_n_0   | digest6/clear                      |                8 |             32 |         4.00 |
+|  clk_IBUF_BUFG                    | digest8/temp[31]_i_1__7_n_0        |                                    |                9 |             32 |         3.56 |
+|  clk_IBUF_BUFG                    | digest4/time_counter[0]_i_2__4_n_0 | digest4/time_counter[0]_i_1__4_n_0 |                8 |             32 |         4.00 |
+|  clk_IBUF_BUFG                    | digest5/temp[31]_i_1__4_n_0        |                                    |                7 |             32 |         4.57 |
+|  clk_IBUF_BUFG                    | digest7/time_counter[0]_i_2__0_n_0 | digest7/time_counter[0]_i_1__1_n_0 |                8 |             32 |         4.00 |
+|  clk_IBUF_BUFG                    | digest2/time_counter[0]_i_2__2_n_0 | digest2/time_counter[0]_i_1__6_n_0 |                8 |             32 |         4.00 |
+|  clk_IBUF_BUFG                    | digest1/temp[31]_i_1__0_n_0        |                                    |                6 |             32 |         5.33 |
+|  clk_IBUF_BUFG                    | digest1/time_counter[0]_i_2__1_n_0 | digest1/time_counter[0]_i_1__7_n_0 |                8 |             32 |         4.00 |
+|  clk_IBUF_BUFG                    | digest7/temp[31]_i_1__6_n_0        |                                    |                9 |             32 |         3.56 |
+|  clk_IBUF_BUFG                    | digest4/f[31]_i_1__3_n_0           |                                    |               18 |             36 |         2.00 |
+|  clk_IBUF_BUFG                    | digest5/f[31]_i_1__4_n_0           |                                    |               17 |             36 |         2.12 |
+|  clk_IBUF_BUFG                    | digest9/f[31]_i_1__8_n_0           |                                    |               20 |             36 |         1.80 |
+|  clk_IBUF_BUFG                    | digest7/f[31]_i_1__6_n_0           |                                    |               17 |             36 |         2.12 |
+|  clk_IBUF_BUFG                    | digest1/f[31]_i_1__0_n_0           |                                    |               12 |             36 |         3.00 |
+|  clk_IBUF_BUFG                    | digest2/f[31]_i_1__1_n_0           |                                    |               15 |             36 |         2.40 |
+|  clk_IBUF_BUFG                    | digest0/f[31]_i_1_n_0              |                                    |               12 |             36 |         3.00 |
+|  clk_IBUF_BUFG                    | digest3/f[31]_i_1__2_n_0           |                                    |               18 |             36 |         2.00 |
+|  clk_IBUF_BUFG                    | digest8/f[31]_i_1__7_n_0           |                                    |               18 |             36 |         2.00 |
+|  clk_IBUF_BUFG                    | digest6/f[31]_i_1__5_n_0           |                                    |               13 |             36 |         2.77 |
+|  clk_IBUF_BUFG                    | digest2/c_lr[4]_i_1__1_n_0         |                                    |               10 |             37 |         3.70 |
+|  clk_IBUF_BUFG                    | digest0/c_lr[4]_i_1_n_0            |                                    |               10 |             37 |         3.70 |
+|  clk_IBUF_BUFG                    | digest1/c_lr[4]_i_1__0_n_0         |                                    |                9 |             37 |         4.11 |
+|  clk_IBUF_BUFG                    | digest8/c_lr[4]_i_1__7_n_0         |                                    |               10 |             37 |         3.70 |
+|  clk_IBUF_BUFG                    | digest6/c_lr[4]_i_1__5_n_0         |                                    |                9 |             37 |         4.11 |
+|  clk_IBUF_BUFG                    | digest7/c_lr[4]_i_1__6_n_0         |                                    |                9 |             37 |         4.11 |
+|  clk_IBUF_BUFG                    | digest9/c_lr[4]_i_1__8_n_0         |                                    |               10 |             37 |         3.70 |
+|  clk_IBUF_BUFG                    | digest3/c_lr[4]_i_1__2_n_0         |                                    |                9 |             37 |         4.11 |
+|  clk_IBUF_BUFG                    | digest4/c_lr[4]_i_1__3_n_0         |                                    |               10 |             37 |         3.70 |
+|  clk_IBUF_BUFG                    | digest5/c_lr[4]_i_1__4_n_0         |                                    |               10 |             37 |         3.70 |
+|  clk_IBUF_BUFG                    |                                    | lcd0/SR[0]                         |               26 |             57 |         2.19 |
+|  clk_IBUF_BUFG                    | digest1/b[31]_i_1__0_n_0           |                                    |               18 |             64 |         3.56 |
+|  clk_IBUF_BUFG                    | digest1/c[31]_i_1__0_n_0           |                                    |               13 |             64 |         4.92 |
+|  clk_IBUF_BUFG                    | digest9/b[31]_i_1__8_n_0           |                                    |               19 |             64 |         3.37 |
+|  clk_IBUF_BUFG                    | digest9/c[31]_i_1__8_n_0           |                                    |               15 |             64 |         4.27 |
+|  clk_IBUF_BUFG                    | digest1/msg                        | digest1/msg[0][7]_i_1__0_n_0       |               14 |             64 |         4.57 |
+|  clk_IBUF_BUFG                    | digest5/c[31]_i_1__4_n_0           |                                    |               12 |             64 |         5.33 |
+|  clk_IBUF_BUFG                    | digest0/msg                        | digest0/msg[0][7]_i_1_n_0          |               12 |             64 |         5.33 |
+|  clk_IBUF_BUFG                    | digest3/msg                        | digest3/msg[0][7]_i_1__2_n_0       |               18 |             64 |         3.56 |
+|  clk_IBUF_BUFG                    | digest2/b[31]_i_1__1_n_0           |                                    |               15 |             64 |         4.27 |
+|  clk_IBUF_BUFG                    | digest2/c[31]_i_1__1_n_0           |                                    |               20 |             64 |         3.20 |
+|  clk_IBUF_BUFG                    | digest3/c[31]_i_1__2_n_0           |                                    |               14 |             64 |         4.57 |
+|  clk_IBUF_BUFG                    | digest9/msg                        | digest9/msg[0][7]_i_1__8_n_0       |               15 |             64 |         4.27 |
+|  clk_IBUF_BUFG                    | digest2/msg                        | digest2/msg[0][7]_i_1__1_n_0       |               14 |             64 |         4.57 |
+|  clk_IBUF_BUFG                    | digest3/b[31]_i_1__2_n_0           |                                    |               16 |             64 |         4.00 |
+|  clk_IBUF_BUFG                    | digest7/b[31]_i_1__6_n_0           |                                    |               13 |             64 |         4.92 |
+|  clk_IBUF_BUFG                    | digest7/c[31]_i_1__6_n_0           |                                    |               14 |             64 |         4.57 |
+|  clk_IBUF_BUFG                    | digest0/b[31]_i_1_n_0              |                                    |               16 |             64 |         4.00 |
+|  clk_IBUF_BUFG                    | digest8/c[31]_i_1__7_n_0           |                                    |               16 |             64 |         4.00 |
+|  clk_IBUF_BUFG                    | digest8/b[31]_i_1__7_n_0           |                                    |               21 |             64 |         3.05 |
+|  clk_IBUF_BUFG                    | digest0/c[31]_i_1_n_0              |                                    |               10 |             64 |         6.40 |
+|  clk_IBUF_BUFG                    | digest4/c[31]_i_1__3_n_0           |                                    |               11 |             64 |         5.82 |
+|  clk_IBUF_BUFG                    | digest4/b[31]_i_1__3_n_0           |                                    |               17 |             64 |         3.76 |
+|  clk_IBUF_BUFG                    | digest5/b[31]_i_1__4_n_0           |                                    |               15 |             64 |         4.27 |
+|  clk_IBUF_BUFG                    | digest8/msg                        | digest8/msg[0][7]_i_1__7_n_0       |               10 |             64 |         6.40 |
+|  clk_IBUF_BUFG                    | digest6/msg                        | digest6/msg[0][7]_i_1__5_n_0       |               11 |             64 |         5.82 |
+|  clk_IBUF_BUFG                    | digest7/msg                        | digest7/msg[0][7]_i_1__6_n_0       |               15 |             64 |         4.27 |
+|  clk_IBUF_BUFG                    | digest6/b[31]_i_1__5_n_0           |                                    |               17 |             64 |         3.76 |
+|  clk_IBUF_BUFG                    | digest6/c[31]_i_1__5_n_0           |                                    |               11 |             64 |         5.82 |
+|  clk_IBUF_BUFG                    | digest5/msg                        | digest5/msg[0][7]_i_1__4_n_0       |               13 |             64 |         4.92 |
+|  clk_IBUF_BUFG                    | digest4/msg                        | digest4/msg[0][7]_i_1__3_n_0       |               16 |             64 |         4.00 |
+|  clk_IBUF_BUFG                    | digest1/w[0][31]_i_1__0_n_0        |                                    |               16 |             66 |         4.13 |
+|  clk_IBUF_BUFG                    | digest7/w[0][31]_i_1__6_n_0        |                                    |               15 |             66 |         4.40 |
+|  clk_IBUF_BUFG                    | digest3/w[0][31]_i_1__2_n_0        |                                    |               20 |             66 |         3.30 |
+|  clk_IBUF_BUFG                    | digest8/w[0][31]_i_1__7_n_0        |                                    |               15 |             66 |         4.40 |
+|  clk_IBUF_BUFG                    | digest4/w[0][31]_i_1__3_n_0        |                                    |               25 |             66 |         2.64 |
+|  clk_IBUF_BUFG                    | digest0/w[0][31]_i_1_n_0           |                                    |               15 |             66 |         4.40 |
+|  clk_IBUF_BUFG                    | digest6/w[0][31]_i_1__5_n_0        |                                    |               16 |             66 |         4.13 |
+|  clk_IBUF_BUFG                    | digest5/w[0][31]_i_1__4_n_0        |                                    |               18 |             66 |         3.67 |
+|  clk_IBUF_BUFG                    | digest9/w[0][31]_i_1__8_n_0        |                                    |               19 |             66 |         3.47 |
+|  clk_IBUF_BUFG                    | digest2/w[0][31]_i_1__1_n_0        |                                    |               19 |             66 |         3.47 |
+|  clk_IBUF_BUFG                    | digest2/row_B                      | digest2/FSM_onehot_P_reg[3]        |               79 |            114 |         1.44 |
+|  clk_IBUF_BUFG                    | digest1/h3[0]_i_2__0_n_0           | digest1/clear                      |               32 |            128 |         4.00 |
+|  clk_IBUF_BUFG                    | digest1/hash                       |                                    |               36 |            128 |         3.56 |
+|  clk_IBUF_BUFG                    | digest0/hash                       |                                    |               32 |            128 |         4.00 |
+|  clk_IBUF_BUFG                    | digest2/h3[0]_i_2__1_n_0           | digest2/clear                      |               32 |            128 |         4.00 |
+|  clk_IBUF_BUFG                    | digest2/hash                       |                                    |               27 |            128 |         4.74 |
+|  clk_IBUF_BUFG                    | digest8/h3[0]_i_2__7_n_0           | digest8/clear                      |               32 |            128 |         4.00 |
+|  clk_IBUF_BUFG                    | digest8/hash                       |                                    |               33 |            128 |         3.88 |
+|  clk_IBUF_BUFG                    | digest9/hash                       |                                    |               32 |            128 |         4.00 |
+|  clk_IBUF_BUFG                    | digest3/hash                       |                                    |               30 |            128 |         4.27 |
+|  clk_IBUF_BUFG                    | digest5/h3[0]_i_2__4_n_0           | digest5/clear                      |               32 |            128 |         4.00 |
+|  clk_IBUF_BUFG                    | digest6/hash                       |                                    |               34 |            128 |         3.76 |
+|  clk_IBUF_BUFG                    | digest3/h3[0]_i_2__2_n_0           | digest3/clear                      |               32 |            128 |         4.00 |
+|  clk_IBUF_BUFG                    | digest0/h3[0]_i_2_n_0              | digest0/clear                      |               32 |            128 |         4.00 |
+|  clk_IBUF_BUFG                    | digest5/hash                       |                                    |               29 |            128 |         4.41 |
+|  clk_IBUF_BUFG                    | digest6/h3[0]_i_2__5_n_0           | digest6/clear                      |               32 |            128 |         4.00 |
+|  clk_IBUF_BUFG                    | digest4/h3[0]_i_2__3_n_0           | digest4/clear                      |               32 |            128 |         4.00 |
+|  clk_IBUF_BUFG                    | digest7/h3[0]_i_2__6_n_0           | digest7/clear                      |               32 |            128 |         4.00 |
+|  clk_IBUF_BUFG                    | digest7/hash                       |                                    |               36 |            128 |         3.56 |
+|  clk_IBUF_BUFG                    | digest9/h3[0]_i_2__8_n_0           | digest9/clear                      |               32 |            128 |         4.00 |
+|  clk_IBUF_BUFG                    | digest4/hash                       |                                    |               29 |            128 |         4.41 |
+|  clk_IBUF_BUFG                    |                                    |                                    |              314 |           1177 |         3.75 |
++-----------------------------------+------------------------------------+------------------------------------+------------------+----------------+--------------+
+
+

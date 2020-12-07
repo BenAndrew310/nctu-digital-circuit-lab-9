@@ -1,0 +1,91 @@
+Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
+------------------------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2020.1 (win64) Build 2902540 Wed May 27 19:54:49 MDT 2020
+| Date         : Mon Dec  7 20:29:04 2020
+| Host         : DESKTOP-8SDEMCC running 64-bit major release  (build 9200)
+| Command      : report_drc -file lab9_drc_routed.rpt -pb lab9_drc_routed.pb -rpx lab9_drc_routed.rpx
+| Design       : lab9
+| Device       : xc7a35ticsg324-1L
+| Speed File   : -1L
+| Design State : Fully Routed
+------------------------------------------------------------------------------------------------------
+
+Report DRC
+
+Table of Contents
+-----------------
+1. REPORT SUMMARY
+2. REPORT DETAILS
+
+1. REPORT SUMMARY
+-----------------
+            Netlist: netlist
+          Floorplan: design_1
+      Design limits: <entire design considered>
+           Ruledeck: default
+             Max violations: <unlimited>
+             Violations found: 11
++----------+----------+-------------------+------------+
+| Rule     | Severity | Description       | Violations |
++----------+----------+-------------------+------------+
+| PDRC-153 | Warning  | Gated clock check | 11         |
++----------+----------+-------------------+------------+
+
+2. REPORT DETAILS
+-----------------
+PDRC-153#1 Warning
+Gated clock check  
+Net FSM_onehot_P_next_reg[3]_i_2_n_0 is a gated clock net sourced by a combinational pin FSM_onehot_P_next_reg[3]_i_2/O, cell FSM_onehot_P_next_reg[3]_i_2. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+Related violations: <none>
+
+PDRC-153#2 Warning
+Gated clock check  
+Net digest0/P_next_reg[4]_i_2_n_0 is a gated clock net sourced by a combinational pin digest0/P_next_reg[4]_i_2/O, cell digest0/P_next_reg[4]_i_2. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+Related violations: <none>
+
+PDRC-153#3 Warning
+Gated clock check  
+Net digest1/P_next_reg[4]_i_2__0_n_0 is a gated clock net sourced by a combinational pin digest1/P_next_reg[4]_i_2__0/O, cell digest1/P_next_reg[4]_i_2__0. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+Related violations: <none>
+
+PDRC-153#4 Warning
+Gated clock check  
+Net digest2/P_next_reg[4]_i_2__1_n_0 is a gated clock net sourced by a combinational pin digest2/P_next_reg[4]_i_2__1/O, cell digest2/P_next_reg[4]_i_2__1. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+Related violations: <none>
+
+PDRC-153#5 Warning
+Gated clock check  
+Net digest3/P_next_reg[4]_i_2__2_n_0 is a gated clock net sourced by a combinational pin digest3/P_next_reg[4]_i_2__2/O, cell digest3/P_next_reg[4]_i_2__2. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+Related violations: <none>
+
+PDRC-153#6 Warning
+Gated clock check  
+Net digest4/P_next_reg[4]_i_2__3_n_0 is a gated clock net sourced by a combinational pin digest4/P_next_reg[4]_i_2__3/O, cell digest4/P_next_reg[4]_i_2__3. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+Related violations: <none>
+
+PDRC-153#7 Warning
+Gated clock check  
+Net digest5/P_next_reg[4]_i_2__4_n_0 is a gated clock net sourced by a combinational pin digest5/P_next_reg[4]_i_2__4/O, cell digest5/P_next_reg[4]_i_2__4. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+Related violations: <none>
+
+PDRC-153#8 Warning
+Gated clock check  
+Net digest6/P_next_reg[4]_i_2__5_n_0 is a gated clock net sourced by a combinational pin digest6/P_next_reg[4]_i_2__5/O, cell digest6/P_next_reg[4]_i_2__5. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+Related violations: <none>
+
+PDRC-153#9 Warning
+Gated clock check  
+Net digest7/P_next_reg[4]_i_2__6_n_0 is a gated clock net sourced by a combinational pin digest7/P_next_reg[4]_i_2__6/O, cell digest7/P_next_reg[4]_i_2__6. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+Related violations: <none>
+
+PDRC-153#10 Warning
+Gated clock check  
+Net digest8/P_next_reg[4]_i_2__7_n_0 is a gated clock net sourced by a combinational pin digest8/P_next_reg[4]_i_2__7/O, cell digest8/P_next_reg[4]_i_2__7. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+Related violations: <none>
+
+PDRC-153#11 Warning
+Gated clock check  
+Net digest9/P_next_reg[4]_i_2__8_n_0 is a gated clock net sourced by a combinational pin digest9/P_next_reg[4]_i_2__8/O, cell digest9/P_next_reg[4]_i_2__8. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+Related violations: <none>
+
+
