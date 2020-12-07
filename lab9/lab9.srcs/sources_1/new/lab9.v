@@ -11,7 +11,7 @@ module lab9(
   output [3:0] LCD_D
 );
 
-localparam [3:0] S_MAIN_IDLE = 0, S_MAIN_WAIT = 1, S_MAIN_START = 2,S_MAIN_STOP = 3;
+localparam [1:0] S_MAIN_IDLE = 0, S_MAIN_WAIT = 1, S_MAIN_START = 2,S_MAIN_STOP = 3;
 localparam INIT_DELAY = 100_000;
 
 reg [7:0] password0 [0:7];
@@ -25,7 +25,7 @@ reg [7:0] password7 [0:7];
 reg [7:0] password8 [0:7];
 reg [7:0] password9 [0:7];
 
-reg [3:0] P, P_next;
+reg [1:0] P, P_next;
 reg [$clog2(INIT_DELAY):0] init_counter;
 reg start = 0;
 wire [0:9] success;
@@ -34,7 +34,7 @@ wire [1:0] btn_level, btn_pressed;
 reg [1:0] prev_btn_level;
 reg [127:0] row_A = "Press BTN3 to   "; // Initialize the text of the first row. 
 reg [127:0] row_B = "start cracking.."; // Initialize the text of the second row.
-wire [127:0] displayA [0:9], displayB[0:9];
+wire [127:0] displayA[0:9], displayB[0:9];
 
 LCD_module lcd0(
   .clk(clk),
@@ -46,7 +46,7 @@ LCD_module lcd0(
   .LCD_RW(LCD_RW),
   .LCD_D(LCD_D)
 );
-    
+  
 debounce btn_db0(
   .clk(clk),
   .btn_input(usr_btn[3]),
@@ -228,7 +228,7 @@ assign btn_pressed = (btn_level & ~prev_btn_level);
 
 always @(posedge clk) begin
   if (~reset_n) begin
-    prev_btn_level <= 1;//2'b00;
+    prev_btn_level <= 1;
   end
   else begin;
     prev_btn_level <= btn_level;
@@ -301,8 +301,8 @@ always @(posedge clk) begin
         row_B = "start cracking..";
     end
     else if (P == S_MAIN_START) begin
-        row_A = displayA[0];//"Cracking passwd ";
-        row_B = displayB[0];//"Please wait.....";
+        row_A = displayA[0];
+        row_B = displayB[0];
     end
     else if (P == S_MAIN_STOP) begin
         if      (success[0]) begin row_A <= displayA[0]; row_B <= displayB[0]; end
@@ -337,10 +337,10 @@ module md5(
     output [127:0] rowB
 );
 
-localparam [4:0] S_MAIN_IDLE = 0,S_MAIN_RESET = 1, S_MAIN_MEMSET = 2,
-                 S_MAIN_MEMCPY = 3, S_MAIN_BREAK_CHUNK = 4, S_MAIN_INIT_HASH = 5, S_MAIN_LOOP_1 = 6,
-                 S_MAIN_LOOP_2 = 7, S_MAIN_LOOP_3 = 8, S_MAIN_LOOP_4 = 9, S_MAIN_ADD_CHUNK = 10,
-                 S_MAIN_STORE_HASH = 11, S_MAIN_COMPARE = 12, S_MAIN_DECIDE = 13, S_MAIN_COUNT_UP = 14, S_MAIN_SHOW = 15, S_MAIN_BRANCH = 16;
+localparam [4:0] S_MD5_IDLE = 0,S_MD5_RESET = 1, S_MD5_MEMSET = 2,
+                 S_MD5_MEMCPY = 3, S_MD5_BREAK_CHUNK = 4, S_MD5_INIT_HASH = 5, S_MD5_LOOP_1 = 6,
+                 S_MD5_LOOP_2 = 7, S_MD5_LOOP_3 = 8, S_MD5_LOOP_4 = 9, S_MD5_ADD_CHUNK = 10,
+                 S_MD5_STORE_HASH = 11, S_MD5_COMPARE = 12, S_MD5_DECIDE = 13, S_MD5_COUNT_UP = 14, S_MD5_SHOW = 15, S_MD5_BRANCH = 16;
 
 reg [0:127] passwd_hash = 128'hef775988943825d2871e1cfa75473ec0;//128'hE8CD0953ABDFDE433DFEC7FAA70DF7F6;
 reg [4:0] P, P_next;
@@ -363,52 +363,50 @@ reg success;
 
 integer i_msg;
 
-// assign success = (isSuccess && P == S_MAIN_SHOW);
-
 always @(posedge clk) begin
-    if (reset) P <= S_MAIN_IDLE;
+    if (reset) P <= S_MD5_IDLE;
     else P <= P_next;
 end
 
 always @(*) begin
     case (P)
-        S_MAIN_IDLE:
-            if (crack) P_next = S_MAIN_RESET;
-            else P_next = S_MAIN_IDLE;
-        S_MAIN_RESET:
-            P_next = S_MAIN_MEMSET;
-        S_MAIN_MEMSET:
-            P_next = S_MAIN_MEMCPY;
-        S_MAIN_MEMCPY:
-            P_next = S_MAIN_BREAK_CHUNK;
-        S_MAIN_BREAK_CHUNK:
-            P_next = S_MAIN_INIT_HASH;
-        S_MAIN_INIT_HASH:
-            P_next = S_MAIN_LOOP_1;
-        S_MAIN_LOOP_1:
-            P_next = S_MAIN_LOOP_2;
-        S_MAIN_LOOP_2:
-            P_next = S_MAIN_LOOP_3;
-        S_MAIN_LOOP_3:
-            P_next = S_MAIN_LOOP_4;
-        S_MAIN_LOOP_4:
-            P_next = S_MAIN_BRANCH;
-        S_MAIN_BRANCH:
-            if (loop_done) P_next = S_MAIN_ADD_CHUNK;
-            else P_next = S_MAIN_LOOP_1;
-        S_MAIN_ADD_CHUNK:
-            P_next = S_MAIN_STORE_HASH;
-        S_MAIN_STORE_HASH:
-            P_next = S_MAIN_COMPARE;
-        S_MAIN_COMPARE:
-            P_next = S_MAIN_DECIDE;
-        S_MAIN_DECIDE:
-            if (all_done) P_next = S_MAIN_SHOW;
-            else P_next = S_MAIN_COUNT_UP;
-        S_MAIN_COUNT_UP:
-            P_next = S_MAIN_RESET;
-        S_MAIN_SHOW:
-            P_next = S_MAIN_SHOW;
+        S_MD5_IDLE:
+            if (crack) P_next = S_MD5_RESET;
+            else P_next = S_MD5_IDLE;
+        S_MD5_RESET:
+            P_next = S_MD5_MEMSET;
+        S_MD5_MEMSET:
+            P_next = S_MD5_MEMCPY;
+        S_MD5_MEMCPY:
+            P_next = S_MD5_BREAK_CHUNK;
+        S_MD5_BREAK_CHUNK:
+            P_next = S_MD5_INIT_HASH;
+        S_MD5_INIT_HASH:
+            P_next = S_MD5_LOOP_1;
+        S_MD5_LOOP_1:
+            P_next = S_MD5_LOOP_2;
+        S_MD5_LOOP_2:
+            P_next = S_MD5_LOOP_3;
+        S_MD5_LOOP_3:
+            P_next = S_MD5_LOOP_4;
+        S_MD5_LOOP_4:
+            P_next = S_MD5_BRANCH;
+        S_MD5_BRANCH:
+            if (loop_done) P_next = S_MD5_ADD_CHUNK;
+            else P_next = S_MD5_LOOP_1;
+        S_MD5_ADD_CHUNK:
+            P_next = S_MD5_STORE_HASH;
+        S_MD5_STORE_HASH:
+            P_next = S_MD5_COMPARE;
+        S_MD5_COMPARE:
+            P_next = S_MD5_DECIDE;
+        S_MD5_DECIDE:
+            if (all_done) P_next = S_MD5_SHOW;
+            else P_next = S_MD5_COUNT_UP;
+        S_MD5_COUNT_UP:
+            P_next = S_MD5_RESET;
+        S_MD5_SHOW:
+            P_next = S_MD5_SHOW;
     endcase
 end
 
@@ -444,7 +442,7 @@ always @(posedge clk) begin
         time_counter <= 0;
         { timer[0], timer[1], timer[2], timer[3], timer[4], timer[5], timer[6]} <= { 8'h30, 8'h30, 8'h30, 8'h30, 8'h30, 8'h30, 8'h30};
     end
-    else if (crack && P != S_MAIN_SHOW) begin
+    else if (crack && P != S_MD5_SHOW) begin
         time_counter = time_counter+1;
         if (time_counter == 100000) begin
             time_counter = 0;
@@ -461,13 +459,13 @@ end
 
 // h0, h1, h2, h3
 always @(posedge clk) begin
-    if (P == S_MAIN_RESET) begin
+    if (P == S_MD5_RESET) begin
         h0 <= 32'h67452301;
         h1 <= 32'hefcdab89;
         h2 <= 32'h98badcfe;
         h3 <= 32'h10325476;
     end
-    else if (P == S_MAIN_ADD_CHUNK) begin
+    else if (P == S_MD5_ADD_CHUNK) begin
         h0 <= h0 + a;
         h1 <= h1 + b;
         h2 <= h2 + c;
@@ -477,12 +475,12 @@ end
 
 // msg
 always @(posedge clk) begin
-    if (P == S_MAIN_MEMSET) begin
+    if (P == S_MD5_MEMSET) begin
         for (i_msg = 0; i_msg < 120; i_msg=i_msg+1 ) begin
             msg[i_msg] <= 8'h0;
         end
     end
-    if (P == S_MAIN_MEMCPY) begin
+    if (P == S_MD5_MEMCPY) begin
         msg[0] <= password[0];
         msg[1] <= password[1];
         msg[2] <= password[2];
@@ -498,32 +496,30 @@ end
 
 // a,b,c,d
 always @(posedge clk) begin
-    if (P == S_MAIN_INIT_HASH) begin
+    if (P == S_MD5_INIT_HASH) begin
         a <= h0;
         b <= h1;
         c <= h2;
         d <= h3;
     end
-//    else if (P == S_MAIN_LOOP_1) increment_i = 0;
-    else if (P == S_MAIN_LOOP_2) begin
+    else if (P == S_MD5_LOOP_2) begin
         temp = d;
         d = c;
         c = b;
     end
-    else if (P == S_MAIN_LOOP_3) begin
+    else if (P == S_MD5_LOOP_3) begin
         x_lr = a + f + k[i] + w[g];
         c_lr = r[i];
     end
-    else if (P == S_MAIN_LOOP_4) begin
+    else if (P == S_MD5_LOOP_4) begin
         b = b + (((x_lr) << (c_lr)) | ((x_lr) >> (32 - (c_lr))));
         a = temp;
-//        increment_i = 1;
     end
 end
 
 // w
 always @(posedge clk) begin
-    if (P==S_MAIN_BREAK_CHUNK) begin
+    if (P==S_MD5_BREAK_CHUNK) begin
         w[0 ] <= { msg[3 ], msg[2 ], msg[1 ], msg[0 ]};
         w[1 ] <= { msg[7 ], msg[6 ], msg[5 ], msg[4 ]};
         w[2 ] <= { msg[11], msg[10], msg[9 ], msg[8 ]};
@@ -545,11 +541,11 @@ end
 
 // i
 always @(posedge clk) begin
-    if (P == S_MAIN_RESET) begin
+    if (P == S_MD5_RESET) begin
         i <= 32'd0;
         loop_done <= 0;
     end
-    else if (P == S_MAIN_LOOP_4) begin
+    else if (P == S_MD5_LOOP_4) begin
         i = i+1;
         if (i==64) loop_done = 1;
     end
@@ -557,7 +553,7 @@ end
 
 //f, g
 always @(posedge clk) begin
-    if (P == S_MAIN_LOOP_1) begin
+    if (P == S_MD5_LOOP_1) begin
         if (i < 16) begin
             f = (b & c) | ((~b) & d);
             g = i;
@@ -576,7 +572,7 @@ end
 
 // hash
 always @(posedge clk) begin
-    if (P == S_MAIN_STORE_HASH) begin
+    if (P == S_MD5_STORE_HASH) begin
         hash[0 ] <= h0[7 :0 ];
         hash[1 ] <= h0[15:8 ];
         hash[2 ] <= h0[23:16];
@@ -598,9 +594,8 @@ end
 
 //compare
 always @(posedge clk) begin
-    if (P == S_MAIN_RESET) all_done <= 0;
-    else if (P == S_MAIN_COMPARE) begin
-//        all_done <= (password[1] == 8'h31 && password[7] == 8'h30);
+    if (P == S_MD5_RESET) all_done <= 0;
+    else if (P == S_MD5_COMPARE) begin
         all_done <= ( hash[0] == passwd_hash[0  :7  ] && hash[1] == passwd_hash[8  :15 ] && hash[2] == passwd_hash[16 :23 ] && hash[3 ] == passwd_hash[24 :31 ] && 
                        hash[4 ] == passwd_hash[32 :39 ] && hash[5 ] == passwd_hash[40 :47 ] && hash[6 ] == passwd_hash[48 :55 ] && hash[7 ] == passwd_hash[56 :63 ] && 
                        hash[8 ] == passwd_hash[64 :71 ] && hash[9 ] == passwd_hash[72 :79 ] && hash[10] == passwd_hash[80 :87 ] && hash[11] == passwd_hash[88 :95 ] && 
@@ -610,11 +605,11 @@ end
 
 //count up
 always @(posedge clk) begin
-    if (reset || P == S_MAIN_IDLE) begin
+    if (reset || P == S_MD5_IDLE) begin
         {password[0],password[1],password[2],password[3],password[4],password[5],password[6],password[7]}
         <= {d1,d2,d3,d4,d5,d6,d7,d8};
     end
-    else if (P == S_MAIN_COUNT_UP) begin
+    else if (P == S_MD5_COUNT_UP) begin
         if (password[7] != 8'h39) password[7] <= password[7] + 1;
         else if (password[6] != 8'h39) begin password[6] <= password[6] + 1; password[7] <= 8'h30; end
         else if (password[5] != 8'h39) begin password[5] <= password[5] + 1; password[7] <= 8'h30; password[6] <= 8'h30; end
@@ -629,58 +624,13 @@ end
 // success
 always @(posedge clk) begin
     if (reset) success <= 0;
-    if (P == S_MAIN_SHOW && all_done) success <= 1;
+    else if (P == S_MD5_SHOW && all_done) success <= 1;
 end
 
 // Display
 always @(posedge clk) begin
-    if (P == S_MAIN_SHOW) begin
-        rowA <= {"Passwd: ",password[0],password[1],password[2],password[3],password[4],password[5],password[6],password[7]};
-        rowB <= {"Time:  ",timer[0],timer[1],timer[2],timer[3],timer[4],timer[5]," ms"};
-    end
-//    end else if (P == S_MAIN_IDLE) begin
-//        rowA = "State           ";
-//        rowB = "IDLE            ";
-//    end else if (P == S_MAIN_RESET) begin
-//        rowA = "State           ";
-//        rowB = "RESET           ";
-//    end else if (P == S_MAIN_MEMSET) begin
-//        rowA = "State           ";
-//        rowB = "MEMSET          ";
-//    end else if (P == S_MAIN_MEMCPY) begin
-//        rowA = "State           ";
-//        rowB = "MEMSCPY          ";
-//    end 
-//    else if (P == S_MAIN_COMPARE) begin
-//        rowA = "State           ";
-//        rowB = "COMPARE         ";
-//    end
-//    else if (P == S_MAIN_BREAK_CHUNK) begin
-//        rowA = "State           ";
-//        rowB = "BREAK CHUNK     ";
-//    end else if (P == S_MAIN_ADD_CHUNK) begin
-//        rowA = "State           ";
-//        rowB = "ADD CHUNK       ";
-//    end else if (P == S_MAIN_INIT_HASH) begin
-//        rowA = "State           ";
-//        rowB = "INIT HASH       ";
-//    end else if (P == S_MAIN_LOOP_1) begin
-//        rowA = "State           ";
-//        rowB = "LOOP 1          ";
-//    end else if (P == S_MAIN_LOOP_2) begin
-//        rowA = "State           ";
-//        rowB = "LOOP 1          ";
-//    end else if (P == S_MAIN_LOOP_3) begin
-//        rowA = "State           ";
-//        rowB = "LOOP 1          ";
-//    end else if (P == S_MAIN_LOOP_4) begin
-//        rowA = "State           ";
-//        rowB = "LOOP 1          ";
-//    end
-    else begin
-        rowA <= {"Passwd: ",password[0],password[1],password[2],password[3],password[4],password[5],password[6],password[7]};//"Cracking passwd ";
-        rowB <= {"Time:  ",timer[0],timer[1],timer[2],timer[3],timer[4],timer[5]," ms"};//"Please wait.....";
-    end 
+    rowA <= {"Passwd: ",password[0],password[1],password[2],password[3],password[4],password[5],password[6],password[7]};
+    rowB <= {"Time:  ",timer[0],timer[1],timer[2],timer[3],timer[4],timer[5]," ms"};
 end
 
 endmodule
