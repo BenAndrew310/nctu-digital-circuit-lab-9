@@ -315,11 +315,10 @@ module md5(
     output success
 );
 
-localparam [3:0] S_MAIN_IDLE = 1,S_MAIN_RESET = 2, S_MAIN_MEMSET = 3,
-                 S_MAIN_MEMCPY = 4, S_MAIN_BREAK_CHUNK = 5, S_MAIN_INIT_HASH = 6, S_MAIN_LOOP_1 = 7,
-                 S_MAIN_LOOP_2 = 8, S_MAIN_LOOP_3 = 9, S_MAIN_LOOP_4 = 10, S_MAIN_ADD_CHUNK = 11,
-                 S_MAIN_STORE_HASH = 12, S_MAIN_COMPARE = 13, S_MAIN_COUNT_UP = 14, S_MAIN_SHOW = 15;
-localparam INIT_DELAY = 100_000;
+localparam [3:0] S_MAIN_IDLE = 0,S_MAIN_RESET = 1, S_MAIN_MEMSET = 2,
+                 S_MAIN_MEMCPY = 3, S_MAIN_BREAK_CHUNK = 4, S_MAIN_INIT_HASH = 5, S_MAIN_LOOP_1 = 6,
+                 S_MAIN_LOOP_2 = 7, S_MAIN_LOOP_3 = 8, S_MAIN_LOOP_4 = 9, S_MAIN_ADD_CHUNK = 10,
+                 S_MAIN_STORE_HASH = 11, S_MAIN_COMPARE = 12, S_MAIN_COUNT_UP = 13, S_MAIN_SHOW = 14;
 
 reg [0:127] passwd_hash = 128'hE8CD0953ABDFDE433DFEC7FAA70DF7F6;
 reg [3:0] P, P_next;
@@ -575,9 +574,9 @@ always @(posedge clk) begin
     if (P == S_MAIN_RESET) isSuccess <= 0;
     else if (P == S_MAIN_COMPARE) begin
         isSuccess <= ( hash[0 ] == passwd_hash[0  :7  ] && hash[1 ] == passwd_hash[8  :15 ] && hash[2 ] == passwd_hash[16 :23 ] && hash[3 ] == passwd_hash[24 :31 ] && 
-                     hash[4 ] == passwd_hash[32 :39 ] && hash[5 ] == passwd_hash[40 :47 ] && hash[6 ] == passwd_hash[48 :55 ] && hash[7 ] == passwd_hash[56 :63 ] && 
-                     hash[8 ] == passwd_hash[64 :71 ] && hash[9 ] == passwd_hash[72 :79 ] && hash[10] == passwd_hash[80 :87 ] && hash[11] == passwd_hash[88 :95 ] && 
-                     hash[12] == passwd_hash[96 :103] && hash[13] == passwd_hash[104:111] && hash[14] == passwd_hash[112:119] && hash[15] == passwd_hash[120:127] );
+                       hash[4 ] == passwd_hash[32 :39 ] && hash[5 ] == passwd_hash[40 :47 ] && hash[6 ] == passwd_hash[48 :55 ] && hash[7 ] == passwd_hash[56 :63 ] && 
+                       hash[8 ] == passwd_hash[64 :71 ] && hash[9 ] == passwd_hash[72 :79 ] && hash[10] == passwd_hash[80 :87 ] && hash[11] == passwd_hash[88 :95 ] && 
+                       hash[12] == passwd_hash[96 :103] && hash[13] == passwd_hash[104:111] && hash[14] == passwd_hash[112:119] && hash[15] == passwd_hash[120:127] );
     end
 end
 
